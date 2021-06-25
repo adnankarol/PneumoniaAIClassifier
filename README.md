@@ -1,5 +1,5 @@
 # Pneumonia_XRay_Classification
-    A project to classify Chest X-Ray images, to detect if Pneumonia is present or not, and to deploy it using Flask and Docker.
+A project to classify Chest X-Ray images, to detect if Pneumonia is present or not, and to deploy it using Flask and Docker.
 
 
 # Table of Contents
