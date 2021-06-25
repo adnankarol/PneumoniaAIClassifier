@@ -1,0 +1,6 @@
+# Files/Folders to be ignored by git
+
+Data/
+static/
+
+disease_classifier.h5

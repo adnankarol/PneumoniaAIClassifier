@@ -1,0 +1,13 @@
+# Config File for app.py
+
+# Storage Paths
+output:
+      dir: "static"
+
+# Size of Image
+dimension:
+      size: 300
+
+# Path for Model
+path:
+      model: "disease_classifier.h5"
