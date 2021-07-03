@@ -4,9 +4,10 @@ A project to classify Chest X-Ray images, to detect if Pneumonia is present or n
 
 # Table of Contents
 1. [ Dataset ](#data)
-2. [ Model Training ](#Using)
-3. [ Model Deployment ](#Future_scope) 
-4. [ Additional Information ](#info)
+2. [ Model ](#model)
+3. [ Model Training ](#Using)
+4. [ Model Deployment ](#Future_scope) 
+5. [ Additional Information ](#info)
 
 ## Repository Contents
 The repository contains the following Files and Folders
@@ -28,6 +29,15 @@ Dataset is taken from Kaggle: https://www.kaggle.com/paultimothymooney/chest-xra
 
     Kermany, Daniel; Zhang, Kang; Goldbaum, Michael (2018), “Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification”, Mendeley Data, V2, doi: 10.17632/rscbjbr9sj.2
 
+<a name="model"></a>
+# Model
+
+A Convolutional Neural Network (CNN) based deep-learning architecture is used to solve the classification problem. The overall number of paramaters in the the training network are 78,017. This architecture consists of Convolutional (7)
+and Pooling Layers (7). Towards the end there are 3 Dense and Dropout layers to solve the classification problem.
+The model is taken from https://github.com/Karan-Malik/ConvNet .
+
+## Input Images
+The Input images are converted to 128 * 128 sized images for standarization purpose. The end goal is to classify if the X-Ray image is of a normal person or with a person suffering with pneunomia. 
 
 
 <a name="using"></a>
