@@ -79,6 +79,6 @@ The model, inspired by [ConvNet](https://github.com/Karan-Malik/ConvNet), utiliz
 
 ### Contact
 
-For queries or issues, reach out via LinkedIn:
+For queries or issues, reach out to us via LinkedIn:
 - [Adnan Karol](https://www.linkedin.com/in/adnan-karol-aa1666179/)
 - [Niloy Chakraborty](https://www.linkedin.com/in/niloy-chakraborty/)
