@@ -1,88 +1,84 @@
-# Pneumonia_XRay_Classification
-A project to classify Chest X-Ray images, to detect if Pneumonia is present or not, and to deploy it using Flask and Docker.
+# PneumoniaAIClassifier
 
+A comprehensive project for classifying chest X-ray images to detect pneumonia using a Convolutional Neural Network (CNN). This project includes model training, deployment via Flask, and Docker.
 
-# Table of Contents
-1. [ Dataset ](#data)
-2. [ Model ](#model)
-3. [ Model Training ](#Using)
-4. [ Model Deployment ](#Future_scope) 
-5. [ Additional Information ](#info)
+## Table of Contents
+
+1. [Dataset](#dataset)
+2. [Model](#model)
+3. [Model Training](#model-training)
+4. [Model Deployment](#model-deployment)
+5. [Additional Information](#additional-information)
 
 ## Repository Contents
-The repository contains the following Files and Folders
 
-1. Training_Notebook.ipynb: Notebook containing training codes for Chest X-Ray images classification, to detect if Pneumonia is present or not.
-2. Dockerfile: Docker File for Deployment.
-3. requirements.txt: Contains various packages and dependencies required for the project.
-4. config.yaml: Configuration file for changing variables and paths of the project.
-5. app.py: Backend for web application deployment using flask.
-6. templates: Frontend for web application deployment using flask.
-7. .gitignore: List of Files or Folders to be ignored by git.
-8. Images: Sample Output Screenshots.
+- **Training_Notebook.ipynb**: Jupyter notebook for training the CNN model on chest X-ray images.
+- **Dockerfile**: Docker configuration file for containerizing the application.
+- **requirements.txt**: List of Python dependencies required for the project.
+- **config.yaml**: Configuration file for setting paths and variables.
+- **app.py**: Flask application backend for serving predictions.
+- **templates/**: Directory containing HTML templates for the web application.
+- **.gitignore**: Specifies files and directories to be ignored by Git.
+- **Images/**: Directory with sample output screenshots.
 
+## Dataset
 
-<a name="data"></a>
-# Dataset
+The dataset is sourced from Kaggle: [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia).
 
-Dataset is taken from Kaggle: https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
+**Citation**: Kermany, Daniel; Zhang, Kang; Goldbaum, Michael (2018). “Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification.” Mendeley Data, V2, doi: 10.17632/rscbjbr9sj.2.
 
-    Kermany, Daniel; Zhang, Kang; Goldbaum, Michael (2018), “Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification”, Mendeley Data, V2, doi: 10.17632/rscbjbr9sj.2
+## Model
 
-<a name="model"></a>
-# Model
+The project employs a Convolutional Neural Network (CNN) for classification. The architecture includes:
 
-A Convolutional Neural Network (CNN) based deep-learning architecture is used to solve the classification problem. The overall number of paramaters in the the training network are 78,017. This architecture consists of Convolutional (7)
-and Pooling Layers (7). Towards the end there are 3 Dense and Dropout layers to solve the classification problem.
-The model is taken from https://github.com/Karan-Malik/ConvNet .
+- **Convolutional Layers**: 7
+- **Pooling Layers**: 7
+- **Dense Layers**: 3
+- **Dropout Layers**: Several to prevent overfitting
 
-## Input Images
-The Input images are converted to 128 * 128 sized images for standarization purpose. The end goal is to classify if the X-Ray image is of a normal person or with a person suffering with pneunomia. 
+The model, inspired by [ConvNet](https://github.com/Karan-Malik/ConvNet), utilizes 78,017 parameters. Input images are resized to 128x128 pixels for standardization.
 
+## Model Training
 
-<a name="using"></a>
-# Model Training
+1. Open a command line interface at the root of the repository.
+2. Install the required Python packages:
+    ```sh
+    pip install -r requirements.txt
+    ```
+3. Open and execute the `Training_Notebook.ipynb` to follow the preprocessing and training steps.
 
-1.  Open command line cmd at the root of the repository.
+**Note**: Modify paths and variables in the `config.yaml` file as needed.
 
-2.  Run the command   
+## Model Deployment
 
-    `pip install -r requirements.txt` 
+1. **Docker Deployment**:
+    - Install Docker from the [official website](https://www.docker.com/).
+    - Build the Docker image:
+      ```sh
+      docker build -t pneumonia_classification_image:v1 .
+      ```
+    - Run the Docker container:
+      ```sh
+      docker run -p 5000:5000 pneumonia_classification_image:v1
+      ```
+    - Access the web application at `http://127.0.0.1:5000/`.
 
-3. Open the Notebook `Training_Notebook.ipynb` to follow all the preprocessing and training steps of the model.
+2. **Flask Deployment**:
+    - Start the Flask application:
+      ```sh
+      flask run
+      ```
 
+3. **Future Scope**:
+    - Plan to integrate cloud storage for models and implement API endpoints for predictions.
 
-NOTE:  In order to make path, variables or any related change, please change the `config.yaml` file. 
+## Additional Information
 
-<a name="Model Deployment"></a>
-# Model Deployment
+- **Python Version**: 3.7.7
+- **Pip Version**: 19.2.3
 
-1. A `Dockerfile` is provided which can be used for deployment. From this `Dockerfile` a docker image can be created and deployed in cloud, etc.
+### Contact
 
-    1. To create a docker image, first download docker for your OS from the official docker website.
-    
-    2. Then, open a command line cmd at the root of the repository, and run the command: `docker build -t pneumonia_classification_image:v1 .`
-
-    3. Once the image is created, you can push the docker image to the docker hub after signing in, from where the image can be used.
-
-    4. To run the docker image, open a command line cmd at the root of the repository, and run the command: `docker run -p 5000:5000 pneumonia_classification_image:v1`
-
-    5. Open the link on your preffered browser: `http://127.0.0.1:5000/`, or check the logs provided by Docker in command line, to find the link.
-
-2. Also a seperate `templates` and `app.py` is provided which can serve as frontend and backend for uploading an image on a web application and getting back a prediction.
-
-    To run the application, open a command line cmd at the root of the repository, and run the command: `flask run`
-
-3. In the future all models can be stored on cloud for sending a `request` and getting a `response` for demand prediction.
-
-4. Samples of deployed images are shown below.
-
-
-<a name="Version"></a>
-
-<a name="info"></a>
-# Additional Information
-## Python Version
-The whole project is developed with python version `Python 3.7.7` and pip version `pip 19.2.3`.
-## Contact
-In case of error, feel free to contact us over Linkedin at [Adnan](https://www.linkedin.com/in/adnan-karol-aa1666179/) and [Niloy](https://www.linkedin.com/in/niloy-chakraborty/).
+For queries or issues, reach out via LinkedIn:
+- [Adnan Karol](https://www.linkedin.com/in/adnan-karol-aa1666179/)
+- [Niloy Chakraborty](https://www.linkedin.com/in/niloy-chakraborty/)
